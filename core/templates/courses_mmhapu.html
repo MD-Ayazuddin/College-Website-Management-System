@@ -1,0 +1,329 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Courses MMAPHU{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/courses_mmhapu.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+
+<style>
+    .tiit-page-wrapper {
+    max-width: 1000px; /* टेक्स्ट पढ़ने में आसानी हो इसलिए चौड़ाई थोड़ी कम रखी है */
+    margin: 30px auto;
+    padding: 0 15px;
+    font-family: sans-serif;
+}
+</style>
+
+{% endblock head %}
+{% block body %}
+
+
+
+<!--courses mmhapu banner-->
+
+
+<div class="container-fluid">
+  <img src="/static/images/banner3.jpeg" alt="cource">
+  <div class="centered">Courses from MMHAPU</div>
+</div>
+
+
+<!--table-->
+<div class="tiit-page-wrapper">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+<h2 class="course-title">Bachelor in Computer Application (BCA)</h2>
+    <h3 class="course-subtitle">Course Structure</h3>
+
+    <table class="bca-table">
+        <tr class="header-red">
+            <th colspan="2">SEMESTER-I</th>
+            <th colspan="2">SEMESTER-II</th>
+        </tr>
+        <tr class="header-pink">
+            <th class="col-code">Course Code</th>
+            <th class="col-title">Course Title</th>
+            <th class="col-code">Course Code</th>
+            <th class="col-title">Course Title</th>
+        </tr>
+        <tr>
+            <td>Paper I</td>
+            <td>Introduction to Information Technology</td>
+            <td>Paper V</td>
+            <td>Programming in C</td>
+        </tr>
+        <tr>
+            <td>Paper II</td>
+            <td>Computer Mathematical Foundation</td>
+            <td>Paper VI</td>
+            <td>Operating System</td>
+        </tr>
+        <tr>
+            <td>Paper III</td>
+            <td>Communication & Soft Skills</td>
+            <td>Paper VII</td>
+            <td>Computer Architecture</td>
+        </tr>
+        <tr>
+            <td>Paper IV</td>
+            <td>PRACTICAL (practical Papers of the 1st Semester)</td>
+            <td>Paper VIII</td>
+            <td>PRACTICAL (Practical Papers of the 2nd Semester)</td>
+        </tr>
+    </table>
+
+    <table class="bca-table">
+        <tr class="header-red">
+            <th colspan="2">SEMESTER-III</th>
+            <th colspan="2">SEMESTER-IV</th>
+        </tr>
+        <tr class="header-pink">
+            <th class="col-code">Course Code</th>
+            <th class="col-title">Course Title</th>
+            <th class="col-code">Course Code</th>
+            <th class="col-title">Course Title</th>
+        </tr>
+        <tr>
+            <td>Paper IX</td>
+            <td>Programming in C++</td>
+            <td>Paper XIII</td>
+            <td>Data Communication & Computer Network</td>
+        </tr>
+        <tr>
+            <td>Paper X</td>
+            <td>System Analysis & Design</td>
+            <td>Paper XIV</td>
+            <td>Relation Data Base Management System</td>
+        </tr>
+        <tr>
+            <td>Paper XI</td>
+            <td>Data Structure</td>
+            <td>Paper XV</td>
+            <td>Visual Basic, .NET</td>
+        </tr>
+        <tr>
+            <td>Paper XII</td>
+            <td>PRACTICAL (Practical Papers of the 3rd Semester)</td>
+            <td>Paper XVI</td>
+            <td>PRACTICAL(Practical Papers of the 4th Semester)</td>
+        </tr>
+    </table>
+
+    <table class="bca-table">
+        <tr class="header-red">
+            <th colspan="2">SEMESTER-V</th>
+            <th colspan="2">SEMESTER-VI</th>
+        </tr>
+        <tr class="header-pink">
+            <th class="col-code">Course Code</th>
+            <th class="col-title">Course Title</th>
+            <th class="col-code">Course Code</th>
+            <th class="col-title">Course Title</th>
+        </tr>
+        <tr>
+            <td>Paper XVII</td>
+            <td>Software Engineering</td>
+            <td>Paper XXI</td>
+            <td>Artificial Intelligence (Elective-I) or Robotics Engineering (Elective-I)</td>
+        </tr>
+        <tr>
+            <td>Paper XVIII</td>
+            <td>Computer Graphics</td>
+            <td>Paper XXII</td>
+            <td>Computer (Elective-II) or Advanced Micro Processors System (Elective-III)</td>
+        </tr>
+        <tr>
+            <td>Paper XIX</td>
+            <td>Java Programming</td>
+            <td>Paper XXIII</td>
+            <td>PRACTICAL (Practical Papers of the 6th Semester)</td>
+        </tr>
+        <tr>
+            <td>Paper XX</td>
+            <td>PRACTICAL (practical Papers of the 5th Semester)</td>
+            <td>Paper XXIV</td>
+            <td>PROJECT REPORT</td>
+        </tr>
+    </table>
+
+    <h2 class="course-title">Bachelor in Business Administration (BBA) (3 Year Degree Course)</h2>
+    <h3 class="course-subtitle">Course Structure</h3>
+    <p>A candidate for the BBA examination shall be required to offer and be examined in 16 papers according to the following curriculum.</p>
+
+    <table>
+        <tr class="header-red">
+            <th>1st Year</th>
+            <th>2nd Year</th>
+            <th>3rd Year</th>
+        </tr>
+        <tr>
+            <td>1. Principles of Management</td>
+            <td>5. Management Information System</td>
+            <td>9. Financial Management</td>
+        </tr>
+        <tr>
+            <td>2. Organizational Behavior</td>
+            <td>6. Cost & Management Accounting</td>
+            <td>10. Marketing Management</td>
+        </tr>
+        <tr>
+            <td>3. Managerial Economics</td>
+            <td>7. Business Laws</td>
+            <td>11. Human Resource Management</td>
+        </tr>
+        <tr>
+            <td>4. Indian Business Environment</td>
+            <td>8. International Business Environment</td>
+            <td>12. Project Report (on &ndash;the job training)</td>
+        </tr>
+        <tr>
+            <td>Business communication(Subsidiary Paper 1)</td>
+            <td>Entrepreneurship Development Program (Subsidiary Paper 1)</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Computer Application(Subsidiary Paper 2)</td>
+            <td>Computer Application II (Subsidiary Paper 2)</td>
+            <td>-</td>
+        </tr>
+    </table>
+    <p class="note"><strong>Note:-</strong> After the 2nd year Annual Examination, each student shall undergo a practical training of 8 weeks duration in an approved Business/Industrial/Service organization and submit at least two copies of the Summer Training Report to the Head of the Department at least 15 days before the date of commencement of the final year Examinations 40 marks shall be awarded on the basis of their internal assessment.</p>
+
+    <h2 class="course-title">Bachelor in Library and Information Science (BLIS) (One Year Degree Course)</h2>
+    <h3 class="course-subtitle">Course Structure</h3>
+    <p>There shall be total Eight Papers of 100 marks each, lout of which five shall be theory paper (written examination) which shall consist of two parts.</p>
+    <p>(a) Written Examination carrying 80, marks and</p>
+    <p>(b) Evaluation of Internal Assignment carrying 20 marks.</p>
+    <p>Each paper practical and one Project Work having Viva-Voce Examination.</p>
+    <p class="red-text">The University Reserves the right to aniseed or change the examination pattern or syllabus.</p>
+
+    <table>
+        <tr class="header-red">
+            <th>Paper</th>
+            <th>Subject</th>
+            <th>Theory</th>
+            <th>Practical/Project</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>Library and Society</td>
+            <td>80</td>
+            <td>20</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>II</td>
+            <td>Management of Library & Information Centre</td>
+            <td>80</td>
+            <td>20</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>III</td>
+            <td>Information Processing (Lib. Cataloging)</td>
+            <td>80</td>
+            <td>20</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>IV</td>
+            <td>Library Classification Theory</td>
+            <td>80</td>
+            <td>20</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>V</td>
+            <td>Information Products Services & Technology</td>
+            <td>80</td>
+            <td>20</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>VI(P)</td>
+            <td>Library Classification Practice</td>
+            <td>--</td>
+            <td>100</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>VII(P)</td>
+            <td>Library Cataloguing Practice</td>
+            <td>--</td>
+            <td>100</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>VIII(P)</td>
+            <td>Project & Viva Voce</td>
+            <td>--</td>
+            <td>100</td>
+            <td>100</td>
+        </tr>
+    </table>
+
+    <h2 class="course-title">Diploma in accountancy for panchayati raj institutions (PRIS) (one year degree course)</h2>
+    <h3 class="course-subtitle">Course Structure</h3>
+    <p>There shall be total four theory papers carrying 100 marks each, and one Practical paper of 100 marks.</p>
+
+    <table>
+        <tr class="header-red">
+            <th rowspan="2">Paper</th>
+            <th rowspan="2">Subject</th>
+            <th colspan="2">Marks</th>
+        </tr>
+        <tr class="header-red" style="background-color: white; color: #333;">
+            <th style="border-top: none;">Theory</th>
+            <th style="border-top: none;">Practical</th>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>Accounting Fundamental</td>
+            <td>100</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>II</td>
+            <td>Journal, Ledger & Trial Balance</td>
+            <td>100</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>III</td>
+            <td>Cash Book, Bank Reconciliation Statement and Inventory</td>
+            <td>100</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>IV</td>
+            <td>Accounting for Local Government</td>
+            <td>100</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>(a) Computer Application</td>
+            <td>--</td>
+            <td>--</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>(b) Job Training/ Project Work</td>
+            <td>--</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>Total</td>
+            <td>400</td>
+            <td>100</td>
+        </tr>
+    </table>
+    </div>
+    </div>
+    </div>
+{% endblock body %}

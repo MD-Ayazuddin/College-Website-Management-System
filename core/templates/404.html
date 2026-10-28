@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | TIIT</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #333;
+        }
+        .error-container {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid #008080;
+            max-width: 500px;
+            width: 90%;
+        }
+        .error-code {
+            font-size: 80px;
+            font-weight: bold;
+            color: #1a3c4b;
+            margin: 0;
+            line-height: 1;
+        }
+        .error-msg {
+            font-size: 22px;
+            color: #008080;
+            margin: 10px 0 20px 0;
+        }
+        .error-desc {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        .home-btn {
+            background-color: #008080;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .home-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <img src="{% static 'images/404.jpeg' %}" alt="404 Error Image" style="max-width: 100%; height: auto; margin-bottom: 20px; border-radius: 8px;">
+        <h2 class="error-msg">Oops! Page Not Found</h2>
+        <p class="error-desc">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        
+        <a href="{% url 'home' %}" class="home-btn">Return to Homepage</a>
+    </div>
+
+</body>
+</html>

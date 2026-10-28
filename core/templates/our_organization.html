@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Our Organization{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+
+
+<!--Our Organization-->
+<div class="container-fluid">
+  <img src="/static/images/banner3.jpeg" alt="Our Organization">
+  <div class="centered">Our Organization</div>
+</div>
+
+<!--Our Organization-->
+<div class="main-box">
+     <!-- LEFT SIDE: Text Box -->
+    <div class="text-box">
+		<h2>Our Organization</h2>
+		<p>The TIIT, has been run under SYED IMAZUDDIN QUADRI MUSLIM MINORITY WELFARE SOCIETY. This society was established in 1985 and after working dedicatedly for almost three years in the field of social welfare, registered on 16/09/1988 via Reg. No.- 277/88 under society act 21.1860 of GOVT. of Bihar. </p>
+    </div>
+
+    <!-- RIGHT SIDE: Image Box -->
+    <div class="image-box">
+        <img src="/static/images/ourOrganization.jpeg" alt="Our Organization">
+    </div>
+</div>
+
+{% endblock body %}

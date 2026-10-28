@@ -1,0 +1,224 @@
+/*1. MAIN WRAPPER & BACKGROUND CARD */
+.tiit-form-wrapper {
+    max-width: 1000px !important;
+    width: 100% !important;
+    margin: 40px auto !important;
+    padding: 0 20px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box !important;
+}
+
+.tiit-form-card {
+    background-color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 40px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    margin-bottom: 30px !important;
+}
+
+/*typography and headers*/
+.form-main-title {
+    color: #001D39; /* Dark Navy */
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: #3A4A5E;
+    margin-bottom: 40px;
+}
+
+.form-section-title {
+    color: #001D39;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4E8EA2; /* Steel blue underline */
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+/*form grid layouts*/
+/* Main form: 2 items side-by-side */
+.tiit-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Address boxes: 3 items side-by-side */
+.address-sub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Forces an input to stretch across the whole screen */
+.tiit-form-group.full-width {
+    grid-column: 1 / -1; 
+}
+
+.tiit-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/*inputs, dropdowns, text area*/
+.tiit-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #001D39;
+    margin-bottom: 8px;
+}
+
+.tiit-input, .tiit-select, .tiit-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #001D39;
+    background-color: #fcfcfc;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.tiit-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Color changes when you click inside a text box */
+.tiit-input:focus, .tiit-select:focus, .tiit-textarea:focus {
+    outline: none;
+    border-color: #4E8EA2; /* Steel blue border */
+    box-shadow: 0 0 5px rgba(78, 142, 162, 0.3);
+    background-color: #ffffff;
+}
+
+/*file upload styling*/
+.tiit-file-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed #4E8EA2;
+    border-radius: 5px;
+    background-color: #F4F8FB;
+    color: #001D39;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.tiit-file-input:hover {
+    background-color: #BDD8E9;
+}
+
+.tiit-file-input::file-selector-button {
+    background-color: #0A4174;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/*educational qualification table */
+.education-table-wrapper {
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+.tiit-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.tiit-table th {
+    background-color: #0A4174;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.tiit-table td {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.tiit-table .tiit-input {
+    padding: 8px;
+}
+
+/*declaration and submit button*/
+.declaration-box {
+    background-color: #F4F8FB;
+    border-left: 4px solid #4E8EA2; /* Steel blue line */
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #3A4A5E;
+    line-height: 1.6;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-top: 4px;
+    transform: scale(1.2); /* Makes the checkbox slightly bigger */
+}
+
+.btn-submit {
+    background-color: #D4A017;
+    color: #001D39;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #001D39;
+    color: #ffffff;
+}
+
+/*mobile responsive design*/
+@media (max-width: 768px) {
+    /* Changes 2 columns into 1 straight column */
+    .tiit-form-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Changes 3 address columns into 1 straight column */
+    .address-sub-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Shrinks the white space around the form for small screens */
+    .tiit-form-card {
+        padding: 20px !important; 
+    }
+    
+    /* Shrinks the main text so it fits the screen */
+    .form-main-title {
+        font-size: 24px;
+    }
+}

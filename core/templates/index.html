@@ -1,0 +1,211 @@
+{% extends 'base.html'%}
+{% load static%}
+
+{% block title %}Home{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/home.css' %}">
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+
+<style>
+
+    /*second jumbotron*/
+
+.tiit-jumbotron-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    margin-bottom: 30px;
+    border-top: 4px solid #008080;
+    font-family: sans-serif;
+    height: 550px;
+    background-image: url('static/images/banner5.jpeg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+    /* Add these three lines */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.jumbotron-title {
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 40px;
+    padding:8px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.jumbotron-description {
+    backdrop-filter:blur(12px);
+    border-radius: 15px;
+    padding: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jumbotron-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.jumbotron-btn-primary {
+    background-color: #0F6B5C; /* #0056b3*/
+    color: #ffffff;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s; /* माउस ले जाने पर स्मूथ इफेक्ट के लिए */
+}
+
+.jumbotron-btn-primary:hover {
+    background-color: #004494; /* होवर करने पर डार्क ब्लू */
+}
+
+.jumbotron-btn-secondary {
+    background-color: #f8f9fa;
+    color: #333333;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    transition: 0.3s;
+}
+
+.jumbotron-btn-secondary:hover {
+    background-color: #e2e6ea; /* होवर करने पर हल्का ग्रे */
+}
+
+
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<!--home jumbotron-->
+<!--
+<div class="jumbotron">
+  <h1 class="display-4">Tauheed Institute of Information Technology,(TIIT)</h1>
+  <p class="lead">Welcome to TIIT (Tauheed Institute of Information Technology), an emerging IT-Institution for better Education. </p>
+  <hr class="my-4">
+  <p>Empowering Students with Quality Education, Practical Skills, and Digital Excellence.</p>
+  <a class="btn btn-primary btn-lg" href="/contect" role="button">Contact Us</a>
+  <a class="btn btn-primary btn-lg" href="/about_institute" role="button">About Us</a>
+</div>-->
+
+<!--second jumbotron-->
+<div class="tiit-jumbotron-card">
+    
+    <h1 class="jumbotron-title">Welcome to Tauheed Institute of Information Technology<br>(TIIT)</h1>
+    
+    <p class="jumbotron-description">
+        An emerging IT-Institution for better Education. Empowering Students with Quality Education, Practical Skills, and Digital Excellence.
+    </p>
+    
+    <div class="jumbotron-buttons">
+        <a href="{% url 'contect' %}" class="jumbotron-btn-primary">Contact Us</a>
+        <a href="{% url 'about_institute' %}" class="jumbotron-btn-secondary">About Us</a>
+    </div>
+
+</div>
+<!--end jumbotron-->
+
+<!--try and del-->
+
+<!--chatgpt-->
+
+    <div class="tiit-wrapper">
+
+    <div class="tiit-card">
+        <h2>Welcome To Tauheed Institute of Information Technology</h2>
+        <p><strong>Welcome to TIIT</strong>, an emerging IT-Institution for better Education.</p>
+        <p>The Tauheed Institute of Information Technology, a Knowledge Resource Center (College) of Maulana Mazharul Haque Arabic and Persian University, Patna, popularly known as TIIT, was established in 2008 with a vision to contribute to the IT world by focusing on better education and guidance.</p>
+        <p>We are committed to provide high quality academic and non-academic facilities to create such a stimulating and effective environment where students can grow holistically. This enables them to face the new challenges of the IT world and makes them capable of producing the best results in every circumstance.</p>
+    </div>
+
+    <!--news-->
+    <div class="tiit-card">
+    <h2>News & Announcements</h2>
+    <ul class="tiit-news-list">
+        
+        {% for news in latest_news %}
+            <li>
+                <span class="tiit-news-date">{{ news.news_date|date:"M d, Y" }}</span>
+                
+                <a href="{% if news.link %}{{ news.link }}{% else %}#{% endif %}">
+                    {{ news.title }}
+                </a>
+
+                {% if news.description %}
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: #555; line-height: 1.4;">
+                        {{ news.description }}
+                    </p>
+                {% endif %}
+            </li>
+            
+        {% empty %}
+            <li>
+                <span class="tiit-news-date">Update</span>
+                <a href="#">No new announcements at this time.</a>
+            </li>
+        {% endfor %}
+        
+    </ul>
+    
+    <a href="news" class="tiit-btn-action">View All News</a>
+</div>
+    <!--news end-->
+
+    <div class="tiit-card tiit-result-card">
+        <h2>Examination Results</h2>
+        <p>Access your latest semester and annual examination results online. Please ensure you have your University Roll Number and Registration Number ready before proceeding to the portal.</p>
+        <a href="{% url 'exam_results' %}" class="tiit-btn-action">Check Results Here</a>
+    </div>
+
+    <div class="tiit-card">
+        <h2>Director's Desk</h2>
+        <div class="tiit-director-quote">
+            <p>"Worldwide, institutes play a vital and critical role in the development and evolution of societies, countries & the World. As today's world is of computers, an institute providing better computer education is much needed for the contribution in development."</p>
+            <p>"Computers are used in each and every aspect of daily life works. So Computer Education is more important for the students of this era in each and every field. We started this institution to fulfill this need of yours in all possible ways, and we are completely dedicated to making your career."</p>
+            
+            <div class="directorImgBox"><img src="static/images/Director.jpeg" alt="Director" class="directorImg"></div>
+            <span class="tiit-director-name">- Director, <br>Tauheed Institute of<br>Information Technology (TIIT)</span>
+        </div>
+    </div>
+
+    <div class="tiit-feature-grid">
+        <a href="#" class="tiit-feature-box">
+            <h3>Institute Prospectus</h3>
+        </a>
+        <a href="/courses_ncpul" class="tiit-feature-box">
+            <h3>Courses By NCPUL</h3>
+        </a>
+        <a href="facilities" class="tiit-feature-box">
+            <h3>Institute Facilities</h3>
+        </a>
+        <a href="admission_form" class="tiit-feature-box">
+            <h3>Admission Form</h3>
+        </a>
+    </div>
+
+</div>
+
+{% endblock body %}

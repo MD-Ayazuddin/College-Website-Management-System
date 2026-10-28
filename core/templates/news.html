@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}News{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+<link rel="stylesheet" href="{% static 'style/news.css' %}">
+
+
+<style>
+     
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'about.css' %}">
+
+<!--news-->
+<div class="container-fluid">
+  <img src="/static/images/banner3.jpeg" alt="Our Organization">
+  <div class="centered">NEWS</div>
+</div>
+
+
+<div class="tiit-card">
+    <h2>News & Announcements</h2>
+    <ul class="tiit-news-list">
+        
+        {% for news in latest_news %}
+            <li>
+                <span class="tiit-news-date">{{ news.news_date|date:"M d, Y" }}</span>
+                
+                <a href="{% if news.link %}{{ news.link }}{% else %}#{% endif %}">
+                    {{ news.title }}
+                </a>
+
+                {% if news.description %}
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: #555; line-height: 1.4;">
+                        {{ news.description }}
+                    </p>
+                {% endif %}
+            </li>
+            
+        {% empty %}
+            <li>
+                <span class="tiit-news-date">Update</span>
+                <a href="#">No new announcements at this time.</a>
+            </li>
+        {% endfor %}
+        
+    </ul>
+    
+    <a href="#" class="tiit-btn-action">View All News</a>
+</div>
+{% endblock body %}

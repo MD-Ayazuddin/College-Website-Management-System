@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}University Fee{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+
+<style>
+/* =========================================
+   MERGED COURSE DETAIL & FEE CSS
+========================================= */
+.merged-wrapper {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    color: #001D39;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    color: #7f8c8d;
+    font-size: 16px;
+}
+
+/* गो बैक बटन */
+.btn-back-custom {
+    display: inline-block;
+    background-color: #7f8c8d;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.2s;
+}
+.btn-back-custom:hover {
+    background-color: #616e70;
+    text-decoration: none;
+}
+
+/* सिंगल कॉलम ग्रिड (एक रो में सिर्फ एक कार्ड) */
+.merged-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* सिंगल कॉलम लेआउट */
+    gap: 45px;
+}
+
+/* मुख्य बड़ा कोर्स कार्ड */
+.merged-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 35px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-left: 6px solid #4E8EA2; /* स्टील ब्लू एक्सेंट लाइन */
+    scroll-margin-top: 30px; /* एंकर स्क्रॉलिंग के लिए स्पेस */
+}
+
+.course-main-title {
+    color: #001D39;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.course-uni-tag {
+    color: #0A4174;
+    font-size: 14.5px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* क्विक फैक्ट्स बार */
+.facts-bar {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.fact-item-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px 18px;
+    border-radius: 6px;
+    min-width: 120px;
+}
+
+.fact-lbl {
+    font-size: 12px;
+    color: #49769F;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.fact-val {
+    font-size: 15px;
+    color: #001D39;
+    font-weight: bold;
+}
+
+.course-desc-text {
+    color: #3A4A5E;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* एलिजिबिलिटी बॉक्स डिज़ाइन */
+.eligibility-block {
+    background-color: #f0fdfa; /* हल्का टील बैकग्राउंड */
+    border: 1px solid #ccfbf1;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.eligibility-block h4 {
+    color: #0A4174;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 16.5px;
+    font-weight: bold;
+}
+
+.eligibility-block p {
+    color: #001D39;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* फीस टेबल डिज़ाइन */
+.fee-table-title {
+    color: #001D39;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.fee-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fee-data-table th, .fee-data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14.5px;
+}
+
+.fee-data-table th {
+    background-color: #f1f5f9;
+    color: #0A4174;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.fee-data-table td {
+    border-bottom: 1px solid #f1f5f9;
+    color: #1F3A52;
+}
+
+.fee-data-table tr:last-child td {
+    border-bottom: none;
+    font-weight: bold;
+    color: #d97706; /* डार्क ऑरेंज कुल फीस के लिए */
+    background-color: #fffbeb;
+}
+
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<!--University fee-->
+<div class="container-fluid">
+  <img src="/static/images/banner3.jpeg" alt="Our Organization">
+  <div class="centered">University Wise Course Fee Structure</div>
+  
+</div>
+
+<div class="merged-wrapper">
+    
+    <div class="page-header">
+        <p>Complete information regarding academic criteria and installment plans for TIIT programs.</p>
+    </div>
+
+    <div class="merged-grid">
+    
+    {% for course in courses %}
+    <div class="merged-card" id="{{ course.name|slugify }}">
+        <h2 class="course-main-title">{{ course.name }}</h2>
+        <div class="course-uni-tag">Affiliated to {{ course.university }}</div>
+        
+        <div class="facts-bar">
+            <div class="fact-item-box"><div class="fact-lbl">Mode</div><div class="fact-val">Full time</div></div>
+            <div class="fact-item-box"><div class="fact-lbl">Duration</div><div class="fact-val">{{ course.duration }}</div></div>
+            <div class="fact-item-box"><div class="fact-lbl">Seats</div><div class="fact-val">{{ course.seats }}</div></div>
+        </div>
+
+        <p class="course-desc-text">{{ course.description }}</p>
+        
+        <div class="eligibility-block">
+            <h4>Eligibility Criteria</h4>
+            <p>{{ course.eligibility }}</p>
+        </div>
+
+        <div class="fee-table-title">Fee Breakdown</div>
+        <table class="fee-data-table">
+            <thead><tr><th>Payment Schedule</th><th>Amount</th></tr></thead>
+            <tbody>
+                {% for fee in course.fees.all %}
+                <tr>
+                    <td>{{ fee.fee_type }}</td>
+                    <td>{{ fee.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+
+</div>
+</div>
+
+{% endblock body %}

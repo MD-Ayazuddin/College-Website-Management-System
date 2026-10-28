@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Our motto{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+
+
+<!--Our Motto-->
+<div class="container-fluid">
+  <img src="/static/images/banner3.jpeg" alt="Our Motto">
+  <div class="centered">Our Motto</div>
+</div>
+
+<!--Our Motto-->
+<div class="main-box">
+     <!-- LEFT SIDE: Text Box -->
+    <div class="text-box">
+		<h2>Our Motto</h2>
+		<p>The Moto of TIIT is to upgrade, improve knowledge of students in computer science and its various applications and to develop understanding of modern business practices to enable them to make informed decision in problem solving in business and industry. The placement division provides career resources for the students who seek summer internships. The College provides resources, contacts and information to help students to determine career strategy that suits individual interest, background and goods. </p>
+    </div>
+
+    <!-- RIGHT SIDE: Image Box -->
+    <div class="image-box">
+        <img src="/static/images/ourMotto.jpeg" alt="Our Motto">
+    </div>
+</div>
+
+{% endblock body %}

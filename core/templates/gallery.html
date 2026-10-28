@@ -1,0 +1,270 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Gallery{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+
+<style>
+
+/* गैलरी पेज का बाहरी ढांचा */
+.tiit-gallery-wrapper {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 15px;
+    font-family: sans-serif;
+}
+
+/* हेडिंग और सब-टाइटल */
+.gallery-main-title {
+    text-align: center;
+    color: #222222;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.gallery-subtitle {
+    text-align: center;
+    color: #555555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* नीली लाइन (डिजाइन के लिए) */
+.gallery-divider {
+    border: none;
+    height: 3px;
+    background-color: #0056b3; /* आपका प्राइमरी ब्लू कलर */
+    width: 60px;
+    margin: 0 auto 30px auto;
+    border-radius: 5px;
+}
+
+/* =========================================
+   गैलरी ग्रिड का जादू (CSS Grid)
+   यह कोड अपने आप स्क्रीन के हिसाब से फोटो को सेट करेगा 
+========================================= */
+.tiit-gallery-grid {
+    display: grid;
+    /* कम से कम 280px की चौड़ाई, जगह मिलने पर बराबर फैल जाएँगी */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* फोटोज के बीच की दूरी */
+    padding: 10px;
+}
+
+/* =========================================
+   सिंगल फोटो कार्ड का डिज़ाइन 
+========================================= */
+.tiit-gallery-item {
+    background-color: #ffffff;
+    border-radius: 8px; /* गोल किनारे */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* हल्की सी शैडो */
+    overflow: hidden; /* ताकि फोटो कार्ड से बाहर न निकले */
+    border: 1px solid #eaeaea;
+    transition: 0.3s ease; /* माउस ले जाने पर स्मूथ एनीमेशन */
+}
+
+/* माउस ले जाने (Hover) पर कार्ड थोड़ा ऊपर उठेगा */
+.tiit-gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* इमेज की सेटिंग */
+.tiit-gallery-item img {
+    width: 100%;
+    height: 220px; /* सभी फोटो की ऊंचाई एक बराबर रहेगी */
+    object-fit: cover; /* अगर फोटो छोटी-बड़ी है, तो वो बिना पिचके सेट हो जाएगी */
+    display: block;
+}
+
+/* फोटो के नीचे लिखा हुआ टेक्स्ट (Caption) */
+.gallery-caption {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #444444;
+    background-color: #f8f9fa; /* हल्का ग्रे बैकग्राउंड */
+    border-top: 1px solid #eeeeee;
+}
+/*slider css*/
+/* Slider Container */
+.tiit-slider-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 8px; /* किनारों को गोल करने के लिए */
+}
+
+/* Slides Setup */
+.tiit-slide {
+    display: none; /* शुरू में सारी फोटो छुपी रहेंगी */
+}
+
+.tiit-slide img {
+    width: 100%;
+    height: 450px; /* स्लाइडर की फिक्स ऊंचाई */
+    object-fit: cover; /* ताकि फोटो बिना पिचके सेट हो जाए */
+    display: block;
+    border-radius: 8px;
+}
+
+/* Caption (फोटो के ऊपर दिखने वाला टेक्स्ट) */
+.slider-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7); /* हल्का पारदर्शी काला बैकग्राउंड */
+    color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Next & Prev Buttons */
+.prev-btn, .next-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.4);
+    user-select: none;
+}
+
+.next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-btn {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+/* माउस ले जाने पर बटन का रंग प्राइमरी ब्लू हो जाएगा */
+.prev-btn:hover, .next-btn:hover {
+    background-color: #0056b3; 
+}
+
+/* Fade Animation (फोटो बदलते वक़्त स्मूथ इफ़ेक्ट) */
+.fade {
+    animation-name: fadeEffect;
+    animation-duration: 1.5s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+</style>
+
+{% endblock head %}
+
+{% block body %}
+
+
+<!--gallery banner-->
+<div class="container-fluid">
+  <img src="/static/images/banner3.jpeg" alt="Our Organization">
+  <div class="centered">GALLERY</div>
+</div>
+
+<!--slider-->
+<div class="tiit-card" style="margin-bottom: 30px; padding: 15px;">
+    <div class="tiit-slider-container">
+        
+        {% for slide in sliders %}
+        <div class="tiit-slide fade">
+            <img src="{{ slide.image.url }}" alt="Gallery Slide">
+            {% if slide.caption %}
+            <div class="slider-caption">{{ slide.caption }}</div>
+            {% endif %}
+        </div>
+        
+        {% empty %}
+        <div class="tiit-slide fade" style="display: block;">
+            <img src="{% static 'images/banner.jpeg' %}" alt="banner" style="height:auto;">
+            <div class="slider-caption">Welcome to TIIT Gallery</div>
+        </div>
+        {% endfor %}
+        <a class="prev-btn" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next-btn" onclick="changeSlide(1)">&#10095;</a>
+
+    </div>
+</div>
+<!--end slider-->
+
+<!--imges-->
+<div class="tiit-gallery-wrapper">
+    <div class="tiit-card">
+        
+        <h1 class="gallery-main-title">Our Gallery</h1>
+        <p class="gallery-subtitle">TIIT Campus, Events, and Activities</p>
+        
+        
+        <hr class="gallery-divider">
+
+        <div class="tiit-gallery-grid">
+            
+            {% for img in images %}
+            <div class="tiit-gallery-item">
+                <img src="{{ img.image.url }}" alt="{{ img.title }}">
+                
+                <div class="gallery-caption">{{ img.title }}</div>
+            </div>
+            
+            {% empty %}
+            <div style="text-align: center; grid-column: 1 / -1; color: #777; padding: 40px;">
+                <h3>No images uploaded yet. Please upload from Admin Panel.</h3>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</div>
+<!--end image-->
+
+<!--javascript-->
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // बटन क्लिक करने पर स्लाइड बदलने का फंक्शन
+    function changeSlide(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // मेन फंक्शन जो स्लाइड को दिखाता और छुपाता है
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("tiit-slide");
+        
+        if (n > slides.length) { slideIndex = 1 } // अगर आखिरी फोटो है, तो पहली पर आ जाओ
+        if (n < 1) { slideIndex = slides.length } // अगर पहली पर पीछे (Prev) दबाया, तो आखिरी पर चले जाओ
+        
+        // सारी फोटो को छुपा दो
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        
+        // सिर्फ करेंट फोटो को दिखाओ
+        slides[slideIndex - 1].style.display = "block";  
+    }
+
+    // ऑटो-स्लाइडर (अपने आप 4 सेकंड में फोटो बदलने के लिए)
+    setInterval(function() {
+        changeSlide(1);
+    }, 10000); 
+</script>
+
+{% endblock body %}

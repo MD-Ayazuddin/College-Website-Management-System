@@ -1,0 +1,305 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>{% block title %} {% endblock title %}aya</title>
+
+     <style>
+      /*social media links*/
+      /* Social Media Section */
+.social-media-section {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.social-media-section h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333333;
+    letter-spacing: 0.5px;
+}
+
+/* Social Links Container */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Individual Social Links */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #333333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Platform-Specific Colors */
+.social-link.youtube {
+    background-color: #FF0000;
+    color: white;
+}
+
+.social-link.youtube:hover {
+    background-color: #cc0000;
+}
+
+.social-link.facebook {
+    background-color: #1877F2;
+    color: white;
+}
+
+.social-link.facebook:hover {
+    background-color: #0a66c2;
+}
+
+.social-link.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+
+.social-link.instagram:hover {
+    filter: brightness(0.9);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .social-links {
+        gap: 15px;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .social-media-section h5 {
+        font-size: 14px;
+    }
+}
+.nav-brand img{
+  height: 20px;
+  width:20px;
+}
+
+
+    </style>
+
+    
+    {% endblock head %}
+  </head>
+  <body style="background-color: #F7F8FA;">
+    <!--chatgpt navbar-->
+   <nav class="custom-navbar">
+  
+  <div class="nav-brand">
+    
+    <a href="{% url 'home' %}">
+        <img src="{% static 'images/tiit logo.jpeg' %}" alt="TIIT Logo" style="max-height: 70px; width: auto; margin-bottom: 15px; background-color: #ffffff; padding: 5px; border-radius: 8px;">
+    </a>
+  </div>
+
+  <button class="mobile-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars">☰</i> 
+  </button>
+
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="/">HOME</a></li>
+    
+    <li class="dropdown">
+      <a href="#">ABOUT INSTITUTE ▼</a>
+      <div class="dropdown-menu">
+        <a href="/about_institute">About Institute</a>
+        <a href="/our_organization">Our Organization</a>
+        <a href="/our_mission_vision">Our Mission & Vision</a>
+        <a href="/our_motto">Our Motto</a>
+        <a href="/affiliation">Affiliation</a>
+        <a href="facilities">Facilities</a>
+        <a href="/location">Location</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="#">COURSES ▼</a>
+      <div class="dropdown-menu">
+        <a href="/courses_ncpul">Courses By NCPUL</a>
+        <a href="/courses_mmhapu">Courses Structure By MMHAPU</a>
+        <a href="/university_fee">University Wise Course Fee</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="#">ADMISSION ▼</a>
+      <div class="dropdown-menu">
+        <a href="/from_ncpul">From NCPUL</a>
+        <a href="/from_mmhapu">From MMHAPU</a>
+        <a href="/admission_form">Admission Form</a>
+      </div>
+    </li>
+
+    <li><a href="/gallery">GALLERY</a></li>
+    <li><a href="/news">NEWS</a></li>
+    <li><a href="/admission_enquiry">ADMISSION ENQUIRY</a></li>
+    <li><a href="/contect">CONTACT</a></li>
+   <!-- <li><a href="/admin">ADMIN</a></li>
+    <li><a href="/student_login">sLogin</a></li>-->
+
+    <li class="dropdown">
+      <a href="#">LOGIN ▼</a>
+      <div class="dropdown-menu">
+        <a href="/student_portal">Student Portal</a>
+        <a href="/faculty_portal">Faculty Portal</a>
+        <a href="/tiitportal">Administrator</a>
+      </div>
+    </li>
+  </ul>
+
+</nav>
+
+<script>
+  function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+  }
+</script>
+
+
+<!--alert-->
+
+{% if messages %}
+    <style>
+        .custom-alert {
+            padding: 12px 20px; margin: 0; text-align: center; font-weight: 500; font-size: 15px; 
+            position: relative; display: flex; justify-content: center; align-items: center;
+        }
+        .alert-error { background-color: #f8d7da; color: #842029; border-bottom: 2px solid #f5c2c7; }
+        .alert-success { background-color: #d1e7dd; color: #0f5132; border-bottom: 2px solid #badbcc; }
+        .alert-default { background-color: #e2e3e5; color: #41464b; border-bottom: 2px solid #d3d6d8; }
+    </style>
+
+    {% for message in messages %}
+    <div class="custom-alert {% if message.tags == 'error' %}alert-error{% elif message.tags == 'success' %}alert-success{% else %}alert-default{% endif %}">
+        
+        <span>{{ message }}</span>
+        
+        <span style="position: absolute; right: 20px; cursor: pointer; font-size: 22px; line-height: 1; font-weight: bold; opacity: 0.6;" 
+              onclick="this.parentElement.style.display='none';" 
+              onmouseover="this.style.opacity='1'" 
+              onmouseout="this.style.opacity='0.6'">
+            &times;
+        </span>
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% block body %} {% endblock body %}
+
+<!--footer-->
+<footer class="footer-custom">
+    <div class="footer-container">
+        <div class="footer-grid">
+            
+            <div class="footer-col">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/tiit logo.jpeg' %}" alt="TIIT Logo" style="max-height: 70px; width: auto; margin-bottom: 15px; background-color: #ffffff; padding: 5px; border-radius: 8px;">
+                </a>
+                <h5 style="margin-top: 15px;">Connect With Us</h5>
+                <div class="social-links mt-3">
+                    <a href="mailto:tiiteftekhar@yahoo.com" class="social-link google" title="Email Us">✉</a>
+                    
+                    <a href="404" class="social-link facebook" title="Facebook" style="font-family: serif;">f</a>
+                    
+                    <a href="https://api.whatsapp.com/send?phone=7909079029" class="social-link whatsapp" title="WhatsApp">✆</a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h5>About Us</h5>
+                <p class="footer-text">Welcome to TIIT (Tauheed Institute of Information Technology), an emerging IT-Institution committed to providing high-quality academic facilities for better education.</p>
+            </div>
+
+            <div class="footer-col">
+                <h5>Contact Us</h5>
+                <ul class="footer-list">
+                    <li>
+                        <span class="icon-text">📍</span> 
+                        <span>Millat Nagar, Rampara, Katihar, Bihar-854105</span>
+                    </li>
+                    <li>
+                        <span class="icon-text">✉</span> 
+                        <a href="mailto:tiiteftekhar@yahoo.com">tiiteftekhar@yahoo.com</a>
+                    </li>
+                    <li>
+                        <span class="icon-text">✆</span> 
+                        <span>
+                            <a href="tel:+919431437946">+91 9431437946</a><br>
+                            <a href="tel:+917909079029" style="margin-top: 5px;">+91 7909079029</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Quick Links</h5>
+                <ul class="footer-list">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about_institute' %}">About Institute</a></li>
+                    <li><a href="{% url 'courses_mmhapu' %}">Courses Info</a></li>
+                    <li><a href="{% url 'news' %}">News & Updates</a></li>
+                    <li><a href="{% url 'gallery' %}">Image Gallery</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Admissions & Portals</h5>
+                <ul class="footer-list">
+                    <li><a href="{% url 'admission_form' %}">Admission Form</a></li>
+                    <li><a href="{% url 'admission_enquiry' %}">Admission Enquiry</a></li>
+                    <li><a href="{% url 'student_portal' %}">Student Portal</a></li>
+                    <li><a href="{% url 'faculty_portal' %}">Faculty Portal</a></li>
+                    <li><a href="{% url 'admin:index' %}">Administrator Login</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="footer-container">
+           
+           <p>&copy; 2026 TIIT. <span>Design & Development</span> by <a href="https://www.linkedin.com/in/aliaslegal0110100001101001/">MD AYAZUDDIN</a></p>
+        </div>
+    </div>
+</footer>
+</div>
+
+
+
+
+
+  </body>
+</html>

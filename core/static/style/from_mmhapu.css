@@ -1,0 +1,78 @@
+/* Basic Setup */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F4F8FB; /* Light blue-tinted background */
+    color: #001D39; /* Dark navy text */
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Main Container */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff; /* White background for the card */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Typography */
+.page-title {
+    text-align: center;
+    color: #001D39; /* Dark Navy */
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 20px;
+}
+
+h1 {
+    background-color: #0A4174; /* Primary Blue */
+    color: #ffffff; /* White text */
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+/* Target the very first h1 to remove extra top margin */
+h1:first-of-type {
+    margin-top: 0;
+}
+
+h2 {
+    color: #0A4174; /* Primary blue for subtitles */
+    font-size: 18px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-left: 4px solid #4E8EA2; /* Steel blue line next to subtitle */
+    padding-left: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+    color: #3A4A5E; /* Blue-gray for paragraphs */
+    font-size: 15px;
+}
+
+ul, ol {
+    color: #3A4A5E; /* Blue-gray for lists */
+    font-size: 15px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+ul li, ol li {
+    margin-bottom: 8px;
+}
+
+.highlight-text {
+    font-weight: bold;
+    color: #001D39;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}

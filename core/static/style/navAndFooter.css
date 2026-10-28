@@ -1,0 +1,276 @@
+/* =========================================
+   Base Navbar Layout (Pure CSS)
+========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.custom-navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #ffffff;
+    padding: 15px 3%; /* Slightly reduced padding to give links more room */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+    font-family: Arial, sans-serif;
+}
+
+/* Brand/Logo */
+.nav-brand a {
+    font-size: 26px;
+    font-weight: bold;
+    color: #004085;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+/* Links Container */
+.nav-menu {
+    display: flex;
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 10px; /* Reduced gap slightly to prevent horizontal overflow */
+}
+
+/* Individual Links */
+.nav-menu a {
+    text-decoration: none;
+    color: #444444;
+    font-weight: 500;
+    font-size: 14px; /* Slightly smaller to fit all links in one line */
+    padding: 10px 8px;
+    transition: color 0.3s ease;
+    white-space: nowrap; /* THE FIX: Forces text to stay on one line */
+}
+
+.nav-menu a:hover {
+    color: #004085;
+}
+
+/* =========================================
+   Dropdown Styling
+========================================= */
+.dropdown {
+    position: relative; 
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 1001;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block; 
+    padding: 10px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    white-space: normal; /* Allows dropdown items to wrap if they are very long */
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+}
+
+/* =========================================
+   Mobile Responsiveness
+========================================= */
+.mobile-toggle {
+    display: none; 
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #004085;
+}
+
+/* Mobile Breakpoint - Adjusts layout for screens smaller than 1024px */
+@media (max-width: 1024px) {
+    .mobile-toggle {
+        display: block; 
+    }
+
+    .nav-menu {
+        display: none; 
+        flex-direction: column; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        display: flex; 
+    }
+
+    .dropdown-menu {
+        position: static; 
+        box-shadow: none;
+        padding-left: 20px;
+    }
+}
+
+
+
+/*footer*/
+/* --- Bulletproof Footer Styling --- */
+.footer-custom {
+    background-color: #001D39; /* डार्क नेवी बैकग्राउंड */
+    color: #BDD8E9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 50px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 5 कॉलम का ग्रिड सिस्टम */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-col h5 {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* हेडिंग के नीचे की नीली लाइन */
+.footer-col h5::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #4E8EA2;
+}
+
+.footer-text {
+    color: #7BBDE8;
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+
+/* लिंक्स की डिज़ाइन */
+.footer-list {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+    margin: 0;
+}
+
+.footer-list li {
+    color: #7BBDE8;
+    font-size: 14.5px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* लिंक्स को रिलेटिव बनाना ताकि लाइन इसके अंदर ही रहे */
+.footer-list a {
+    color: #7BBDE8;
+    text-decoration: none;
+    position: relative; /* यह लाइन बहुत ज़रूरी है */
+    display: inline-block;
+    padding-bottom: 2px; /* लाइन और टेक्स्ट के बीच थोड़ी जगह के लिए */
+}
+
+/* लाइन का डिज़ाइन (जो शुरू में छिपी रहेगी) */
+.footer-list a::after {
+    content: '';
+    position: absolute;
+    width: 0;           /* शुरू में लाइन की चौड़ाई 0 (गायब) होगी */
+    height: 2px;        /* लाइन की मोटाई */
+    bottom: 0;
+    left: 0;            /* लेफ्ट से शुरू होगी */
+    background-color: #D4A017; /* लाइन का रंग (एम्बर एक्सेंट) */
+    transition: width 0.3s ease; /* एनीमेशन की स्पीड (0.3 सेकंड) */
+}
+
+/* होवर करने पर लाइन को 100% चौड़ा (लेफ्ट से राइट) कर देना */
+.footer-list a:hover::after {
+    width: 100%;
+}
+
+/* होवर करने पर टेक्स्ट का रंग भी बदलना (ऑप्शनल) */
+.footer-list a:hover {
+    color: #D4A017; 
+}
+
+.text-teal {
+    color: #D4A017;
+    margin-top: 4px;
+}
+
+/* सोशल मीडिया बटन्स */
+.social-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.social-link:hover { transform: translateY(-5px); }
+.social-link.google:hover { background-color: #ea4335; }
+.social-link.facebook:hover { background-color: #1877F2; }
+.social-link.whatsapp:hover { background-color: #25D366; }
+
+/* कॉपीराइट वाला निचला हिस्सा */
+.footer-bottom {
+    background-color: #000F1F;
+    color: #7BBDE8;
+    font-size: 14px;
+    text-align: center;
+    padding: 15px 0;
+}
+.footer-bottom a {
+    color: #D4A017;
+    text-decoration: none;
+}

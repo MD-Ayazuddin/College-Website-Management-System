@@ -1,0 +1,257 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Admission Form{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/admission_form.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+
+<style>
+
+</style>
+{% endblock head %}
+
+{% block body %}
+
+
+
+<!--chatgpt-->
+<div class="tiit-form-wrapper">
+    <div class="tiit-form-card">
+        
+        <h1 class="form-main-title">Online Admission Form</h1>
+        <p class="form-subtitle">Tauheed Institute of Information Technology (TIIT)</p>
+
+        <form action="/form_data_admission" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <h3 class="form-section-title">Course & Session Details</h3>
+            <div class="tiit-form-grid">
+                <div class="tiit-form-group">
+                    <label for="courseApplied" class="tiit-label">Course Applied For *</label>
+                    <select name="courseApplied" id="courseApplied" class="tiit-select" required>
+                        <option value="" selected disabled>-- Select Course --</option>
+                        <option value="BCA">BCA (Bachelor of Computer Applications)</option>
+                        <option value="BBA">BBA (Bachelor of Business Administration)</option>
+                        <option value="CABA-MDTP">CABA-MDTP</option>
+                        <option value="PG-DIPLOMA">PG Diploma</option>
+                    </select>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="session" class="tiit-label">Session *</label>
+                    <input type="text" name="session" id="session" class="tiit-input" placeholder="e.g., 2026-2029" required>
+                </div>
+            </div>
+
+            <h3 class="form-section-title">Personal Information</h3>
+            <div class="tiit-form-grid">
+                <div class="tiit-form-group full-width">
+                    <label for="studentName" class="tiit-label">Candidate's Full Name *</label>
+                    <input type="text" class="tiit-input" name="studentName" id="studentName" placeholder="Enter full Name" required>
+                </div>
+                
+                <div class="tiit-form-group">
+                    <label for="fatherName" class="tiit-label">Father's Name *</label>
+                    <input type="text" name="fatherName" id="fatherName" class="tiit-input" required>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="motherName" class="tiit-label">Mother's Name *</label>
+                    <input type="text" name="motherName" id="motherName" class="tiit-input" required>
+                </div>
+
+                <div class="tiit-form-group">
+                    <label for="dob" class="tiit-label">Date of Birth *</label>
+                    <input type="date" name="dob" id="dob" class="tiit-input" required>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="gender" class="tiit-label">Gender *</label>
+                    <select name="gender" id="gender" class="tiit-select" required>
+                        <option value="" selected disabled>-- Select --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="tiit-form-group">
+                    <label for="Nationality" class="tiit-label">Nationality *</label>
+                    <input type="text" name="Nationality" id="Nationality" class="tiit-input" value="Indian" required>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="maritalStatus" class="tiit-label">Marital Status *</label>
+                    <select name="maritalStatus" id="maritalStatus" class="tiit-select" required>
+                        <option value="" selected disabled>-- Select --</option>
+                        <option value="Unmarried">Unmarried</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Widowed</option>
+                        <option value="Separated">Separated</option>
+                    </select>
+                </div>
+
+                <div class="tiit-form-group">
+                    <label for="background" class="tiit-label">Background *</label>
+                    <select name="background" id="background" class="tiit-select" required>
+                        <option value=""selected disabled>-- Select --</option>
+                        <option value="Urban">Urban</option>
+                        <option value="Rural">Rural</option>
+                    </select>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="phyHandicapped" class="tiit-label">Physically Handicapped? *</label>
+                    <select name="phyHandicapped" id="phyHandicapped" class="tiit-select" required>
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+
+                <div class="tiit-form-group">
+                    <label for="category" class="tiit-label">Category *</label>
+                    <select name="category" id="category" class="tiit-select" required>
+                        <option value="" selected disabled>-- Select Category --</option>
+                        <option value="General">General</option>
+                        <option value="BC">BC</option>
+                        <option value="OBC">OBC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                    </select>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="religion" class="tiit-label">Religion</label>
+                    <select name="religion" id="religion" class="tiit-select">
+                        <option value="" selected disabled>-- Select Religion --</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Islam">Islam</option>
+                        <option value="Christian">Christian</option>
+                        <option value="Sikh">Sikh</option>
+                        <option value="Buddhist">Buddhist</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="tiit-form-group">
+                    <label for="bloodGroup" class="tiit-label">Blood Group</label>
+                    <select name="bloodGroup" id="bloodGroup" class="tiit-select">
+                        <option value="">-- Select Blood Group --</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="markIden" class="tiit-label">Mark of Identification</label>
+                    <input type="text" name="markIden" id="markIden" class="tiit-input" placeholder="Visible identification mark">
+                </div>
+            </div>
+
+            <h3 class="form-section-title">Document Uploads</h3>
+            <div class="tiit-form-grid">
+                <div class="tiit-form-group">
+                    <label class="tiit-label">Recent Photograph (Passport Size) *</label>
+                    <input type="file" name="student_photo" id="student_photo" class="tiit-file-input" accept="image/jpeg, image/png, image/jpg" required>
+                </div>
+                <div class="tiit-form-group">
+                    <label class="tiit-label">Candidate Signature *</label>
+                    <input type="file" name="student_signature" id="student_signature" class="tiit-file-input" accept="image/jpeg, image/png, image/jpg" required>
+                </div>
+            </div>
+
+            <h3 class="form-section-title">Contact & Address Details</h3>
+            <div class="tiit-form-grid">
+                <div class="tiit-form-group">
+                    <label for="mobileNO" class="tiit-label">Mobile Number *</label>
+                    <input type="tel" name="mobileNO" id="mobileNO" class="tiit-input" placeholder="+91" required>
+                </div>
+                <div class="tiit-form-group">
+                    <label for="email" class="tiit-label">Email Address *</label>
+                    <input type="email" name="email" id="email" class="tiit-input" placeholder="example@email.com" required>
+                </div>
+
+                <div class="tiit-form-group full-width">
+                    <label for="PermanentAddress" class="tiit-label">Permanent Address *</label>
+                    <textarea class="tiit-textarea" name="PermanentAddress" id="PermanentAddress" placeholder="Street, Village/City, House No." required></textarea>
+                    <div class="address-sub-grid">
+                        <input type="text" name="per_district" id="per_district" class="tiit-input" placeholder="District" required>
+                        <input type="text" name="per_state" id="per_state" class="tiit-input" placeholder="State" required>
+                        <input type="text" name="per_pinCode" id="per_pinCode" class="tiit-input" placeholder="Pincode" required>
+                    </div>
+                </div>
+
+                <div class="tiit-form-group full-width">
+                    <label for="correspondenceAddress" class="tiit-label">Correspondence Address *</label>
+                    <textarea class="tiit-textarea" name="correspondenceAddress" id="correspondenceAddress" placeholder="Street, Village/City, House No." required></textarea>
+                    <div class="address-sub-grid">
+                        <input type="text" name="corr_district" id="corr_district" class="tiit-input" placeholder="District" required>
+                        <input type="text" name="corr_state" id="corr_state" class="tiit-input" placeholder="State" required>
+                        <input type="text" name="corr_pinCode" id="corr_pinCode" class="tiit-input" placeholder="Pincode" required>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="form-section-title">Previous Educational Qualification</h3>
+            <div class="education-table-wrapper">
+                <table class="tiit-table">
+                    <thead>
+                        <tr>
+                            <th>Examination Passed</th>
+                            <th>Board / University</th>
+                            <th>Passing Year</th>
+                            <th>% of Marks</th>
+                            <th>Division</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="tiit-input" placeholder="10th / Matriculation" readonly></td>
+                            <td><input type="text" name="tenth_board" id="tenth_board" class="tiit-input"></td>
+                            <td><input type="text" name="tenth_passYear" id="tenth_passYear" class="tiit-input"></td>
+                            <td><input type="text" name="tenth_percentage" id="tenth_percentage" class="tiit-input"></td>
+                            <td><input type="text" name="tenth_division" id="tenth_division" class="tiit-input"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="tiit-input" placeholder="12th / Intermediate" readonly></td>
+                            <td><input type="text" name="twelth_board" id="twelth_board" class="tiit-input"></td>
+                            <td><input type="text" name="twelth_passYear" id="twelth_passYear" class="tiit-input"></td>
+                            <td><input type="text" name="twelth_percentage" id="twelth_percentage" class="tiit-input"></td>
+                            <td><input type="text" name="twelth_division" id="twelth_division" class="tiit-input"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="tiit-input" placeholder="Graduation (UG)"></td>
+                            <td><input type="text" name="ug_board" id="ug_board" class="tiit-input"></td>
+                            <td><input type="text" name="ug_passYear" id="ug_passYear" class="tiit-input"></td>
+                            <td><input type="text" name="ug_percentage" id="ug_percentage" class="tiit-input"></td>
+                            <td><input type="text" name="ug_division" id="ug_division" class="tiit-input"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="tiit-input" placeholder="Post Grad (PG) / Other"></td>
+                            <td><input type="text" name="pg_board" id="pg_board" class="tiit-input"></td>
+                            <td><input type="text" name="pg_passYear" id="pg_passYear" class="tiit-input"></td>
+                            <td><input type="text" name="pg_percentage" id="pg_percentage" class="tiit-input"></td>
+                            <td><input type="text" name="pg_division" id="pg_division" class="tiit-input"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="declaration-box">
+                <strong>Declaration by the Candidate:</strong>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="declaration" required>
+                    <label for="declaration">
+                        I hereby declare that I fulfill the minimum eligibility criteria for the course and have provided correct information. I understand that if any information is found incorrect, my admission shall be liable to be cancelled by the University without refund. I also declare I have not taken simultaneous admission in any other course during the same session.
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Application</button>
+
+        </form>
+    </div>
+</div>
+{% endblock body %}

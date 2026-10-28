@@ -1,0 +1,193 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Examination Results - TIIT{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'style/home.css' %}">
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+
+<style>
+/* रिजल्ट पेज की CSS */
+.results-wrapper{
+    max-width: 1050px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', sans-serif;
+}
+.page-title {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.page-sub {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+.course-result-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px; padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    border-left: 6px solid #008080;
+}
+.course-title {
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+}
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.result-table th, .result-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14.5px;
+}
+.result-table th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+}
+.result-table td {
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    background-color: #d97706;
+    color: #ffffff !important;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+.btn-download:hover {
+    background-color: #b45309;
+}
+.empty-msg {
+    text-align: center;
+    color: #94a3b8;
+    font-style: italic;
+    padding: 15px 0;
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<div class="container-fluid" style="position: relative; text-align: center; color: white;">
+    <img src="{% static 'images/banner3.jpeg' %}" alt="Results Banner" style="width: 100%; max-height: 250px; object-fit: cover;">
+    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 40px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        Examination Results
+    </div>
+</div>
+
+<div class="results-wrapper">
+    <h1 class="page-title">Download University Results</h1>
+    <p class="page-sub">Select your course to download the official examination result PDF.</p>
+
+    <div class="course-result-card">
+        <h2 class="course-title">Bachelor of Computer Application (BCA - 3 Years)</h2>
+        {% if bca_results %}
+        <table class="result-table">
+            <thead><tr><th>Result</th><th>Examination Session</th><th>Uploaded Date</th><th>Download</th></tr></thead>
+            <tbody>
+                {% for res in bca_results %}
+                <tr>
+                    <td>{{ res.result_title }}</td>
+                    <td>{{ res.session }}</td>
+                    <td>{{ res.upload_date|date:"d M Y" }}</td>
+                    <td><a href="{{ res.pdf_file.url }}" target="_blank" class="btn-download">Download</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}<div class="empty-msg">No results declared yet for this course.</div>{% endif %}
+    </div>
+
+    <div class="course-result-card">
+        <h2 class="course-title">Bachelor of Business Administration (BBA - 3 Years)</h2>
+        {% if bba_results %}
+        <table class="result-table">
+            <thead><tr><th>Result</th><th>Examination Session</th><th>Uploaded Date</th><th>Download</th></tr></thead>
+            <tbody>
+                {% for res in bba_results %}
+                <tr>
+                    <td>{{ res.result_title }}</td><td>{{ res.session }}</td><td>{{ res.upload_date|date:"d M Y" }}</td>
+                    <td><a href="{{ res.pdf_file.url }}" target="_blank" class="btn-download">Download</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}<div class="empty-msg">No results declared yet for this course.</div>{% endif %}
+    </div>
+
+    <div class="course-result-card">
+        <h2 class="course-title">Bachelor of Library and Information Science (BLIS - 1 Year)</h2>
+        {% if blis_results %}
+        <table class="result-table">
+            <thead><tr><th>Result</th><th>Examination Session</th><th>Uploaded Date</th><th>Download</th></tr></thead>
+            <tbody>
+                {% for res in blis_results %}
+                <tr>
+                    <td>{{ res.result_title }}</td><td>{{ res.session }}</td><td>{{ res.upload_date|date:"d M Y" }}</td>
+                    <td><a href="{{ res.pdf_file.url }}" target="_blank" class="btn-download">Download</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}<div class="empty-msg">No results declared yet for this course.</div>{% endif %}
+    </div>
+
+    <div class="course-result-card">
+        <h2 class="course-title">Diploma in Accountancy for Panchayati Raj Institutions (PRIS - 1 Year)</h2>
+        
+        {% if pris_results %}
+        <table class="result-table">
+            <thead><tr><th>Result</th><th>Examination Session</th><th>Uploaded Date</th><th>Download</th></tr></thead>
+            <tbody>
+                {% for res in pris_results %}
+                <tr>
+                    <td>{{ res.result_title }}</td><td>{{ res.session }}</td><td>{{ res.upload_date|date:"d M Y" }}</td>
+                    <td><a href="{{ res.pdf_file.url }}" target="_blank" class="btn-download">Download</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}<div class="empty-msg">No results declared yet for this course.</div>{% endif %}
+    </div>
+
+    <div class="course-result-card">
+        <h2 class="course-title">Diploma Courses (1 Year)</h2>
+        {% if diploma_results %}
+        <table class="result-table">
+            <thead><tr><th>Result</th><th>Examination Session</th><th>Uploaded Date</th><th>Download</th></tr></thead>
+            <tbody>
+                {% for res in diploma_results %}
+                <tr>
+                    <td>{{ res.result_title }}</td><td>{{ res.session }}</td><td>{{ res.upload_date|date:"d M Y" }}</td>
+                    <td><a href="{{ res.pdf_file.url }}" target="_blank" class="btn-download">Download</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}<div class="empty-msg">No results declared yet for this course.</div>{% endif %}
+    </div>
+
+</div>
+
+{% endblock body %}

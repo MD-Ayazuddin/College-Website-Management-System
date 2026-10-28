@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+{% block title %}Admission Enquiry{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/admission_enquiry.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+{% endblock head %}
+{% block body %}
+
+<!--admission enquiry-->
+<div class="container-fluid">
+   <img src="/static/images/banner3.jpeg" alt="Our Organization">
+   <div class="centered">Admission Enquiry</div>
+</div>
+<!--form-->
+
+    <div class="enquiry_container">
+        <h2>Admission Enquiry</h2>
+        
+        <form method="post" action="/form_data_admission_enquiry">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="studentName">Student Name <sup class="required-asterisk">**</sup></label>
+                <input type="text" class="form-control" name="studentName" id="studentName" placeholder="Enter full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date Of Birth <sup class="required-asterisk">**</sup></label>
+                <input type="date" class="form-control" name="dob" id="dob" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="courceCategory">Course Category <sup class="required-asterisk">**</sup></label>
+                    <select id="courceCategory" name="courceCategory" class="form-control" required>
+                        <option value="" selected disabled>Select a category</option>
+                        <option value="postgrad">Post Graduate Degree Programme</option>
+                        <option value="undergrad">Under Graduate Degree Programme</option>
+                        <option value="apprentice_undergrad">Apprenticeship Under Graduate Degree Programme</option>
+                        <option value="apprentice_postgrad">Apprenticeship Post Graduate Degree Programme</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="courseInterested">Course Interested <sup class="required-asterisk">**</sup></label>
+                    <input type="text" class="form-control" name="courseInterested" id="courseInterested" placeholder="e.g. BCA, BBA" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="city">City <sup class="required-asterisk">**</sup></label>
+                    <input type="text" class="form-control" name="city" id="city" placeholder="Enter city" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">Zip Code <sup class="required-asterisk">**</sup></label>
+                    <input type="number" class="form-control" name="zipCode" id="zipCode" placeholder="e.g. 854105" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phoneNo">Phone No <sup class="required-asterisk">**</sup></label>
+                    <input type="tel" class="form-control" name="phoneNo" id="phoneNo" placeholder="10-digit number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="example@email.com">
+                </div>
+            </div>
+
+            <button class="btn-primary" type="submit">Submit Enquiry</button>
+        </form>
+    </div>
+{% endblock body %}

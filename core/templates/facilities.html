@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Facilities{% endblock title %}
+{% block head %}
+    
+    <link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+    <link rel="stylesheet" href="{% static 'style/about.css' %}">
+{% endblock head %}
+
+{% block body %}
+<style>
+/* =========================================
+   TIIT FACILITIES CSS (Card Grid Style)
+========================================= */
+.fac-wrapper {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* पेज की मुख्य हेडिंग */
+.page-title {
+    text-align: center;
+    color: #001D39;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.page-sub {
+    text-align: center;
+    color: #1F3A52;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+/* आपके स्टाइल का 3-कॉलम ग्रिड */
+.fac-grid {
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* फैसिलिटी कार्ड का डिज़ाइन */
+.fac-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* माउस ले जाने पर कार्ड का इफ़ेक्ट */
+.fac-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-bottom: 4px solid #4E8EA2; /* नीचे की तरफ टील बॉर्डर */
+}
+
+/* आइकॉन का बॉक्स */
+.fac-icon-box {
+    width: 70px;
+    height: 70px;
+    background-color: #f0fdfa; /* हल्का टील बैकग्राउंड */
+    color: #4E8EA2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 20px auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* होवर करने पर आइकॉन का रंग बदलना */
+.fac-card:hover .fac-icon-box {
+    background-color: #4E8EA2;
+    color: #ffffff;
+}
+
+/* टेक्स्ट का डिज़ाइन */
+.fac-card h3 {
+    color: #001D39;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.fac-card p {
+    color: #1F3A52;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+</style>
+
+<div class="container-fluid">
+        <img src="/static/images/banner3.jpeg" alt="Institute Facilities">
+        <div class="centered">Institute Facilities</div>
+    </div>
+
+<div class="fac-wrapper">
+
+    <p class="page-sub">Explore the state-of-the-art infrastructure and amenities available for TIIT students.</p>
+
+    <div class="fac-grid">
+        
+        <div class="fac-card">
+            <div class="fac-icon-box">📚</div>
+            <h3>Library</h3>
+            <p>The college has a rich library facility for all students to access academic books and journals.</p>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon-box">🔬</div>
+            <h3>Laboratories</h3>
+            <p>The college has departmental-based modern laboratory facilities for practical learning.</p>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon-box">🏛️</div>
+            <h3>Auditorium</h3>
+            <p>The college has a spacious auditorium facility for hosting events, seminars, and functions.</p>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon-box">☕</div>
+            <h3>Cafeteria</h3>
+            <p>The college has a well-maintained canteen facility providing healthy food for staff and students.</p>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon-box">💻</div>
+            <h3>I.T Infrastructure</h3>
+            <p>The college has an excellent IT Infrastructure facility with high-speed internet for students.</p>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon-box">🏓</div>
+            <h3>Sports</h3>
+            <p>The college has excellent sports facilities for all students to encourage physical fitness.</p>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon-box">🎓</div>
+            <h3>Alumni Associations</h3>
+            <p>The college maintains strong networking opportunities for the alumni association.</p>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

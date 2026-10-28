@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Portal</title>
+    <style>
+    body{background-color: #F4F8FB;}
+       /* Centers the login card on the screen */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Light gray background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* The white login box */
+.login-card {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    width: 100%;
+    max-width: 400px; /* Prevents the card from getting too wide */
+    box-sizing: border-box;
+}
+
+/* Title with the teal underline */
+.login-title {
+    color: #001D39; /* Dark text */
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #4E8EA2;
+    display: inline-block;
+}
+
+/* Spacing between inputs */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Input labels */
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* Red asterisk for required fields */
+.required {
+    color: #d9534f;
+}
+
+/* The actual input text boxes */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+    outline: none;
+}
+
+/* When the user clicks inside the text box */
+.form-group input:focus {
+    border-color: #4E8EA2 ;
+    box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.1);
+}
+
+/* The main login button */
+.submit-btn {
+    background-color:#0A4174;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #001D39; /* Darker teal on hover */
+}
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+    <div class="login-card">
+        <h2 class="login-title">FACULTY LOGIN</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+            <div style="color: #d9534f; background-color: #f8d7da; padding: 10px; border-radius: 4px; margin-bottom: 15px; font-size: 14px; text-align: center;">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" action="{% url 'faculty_portal' %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            
+            <div class="form-group">
+                <label for="id_username">Username <span class="required">*</span></label>
+                <input type="text" id="id_username" name="username" placeholder="Enter username" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password">Password <span class="required">*</span></label>
+                <input type="password" id="id_password" name="password" placeholder="Enter password" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

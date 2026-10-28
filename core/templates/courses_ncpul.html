@@ -1,0 +1,159 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Courses NCPUL{% endblock title %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/navAndFooter.css' %}">
+
+<style>
+  /* बेसिक सेटिंग */
+.tiit-page-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    font-family: sans-serif;
+}
+
+/* हेडर डिज़ाइन */
+.course-page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px dashed #cccccc;
+    padding-bottom: 20px;
+}
+
+.page-subtitle {
+    color: #666666;
+    font-size: 16px;
+}
+
+/* हर एक कोर्स का अलग बॉक्स */
+.modern-course-box {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* कोर्स 2 को थोड़ा अलग दिखाने के लिए हल्का ग्रे बैकग्राउंड */
+.secondary-course {
+    background-color: #fafafa;
+    border-left: 4px solid #4E8EA2; /* ग्रीन बॉर्डर */
+}
+
+/* टाइटल और बैज को एक लाइन में लाने के लिए (Flexbox) */
+.course-title-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.course-full-name {
+    color: #555555;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+/* 1 Year Diploma वाला बैज */
+.course-badge {
+    background-color: #0056b3;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* लिस्ट की जगह मॉडर्न ग्रिड (Grid) */
+.curriculum-title {
+    margin-top: 25px;
+    color: #222;
+    font-size: 18px;
+}
+
+.curriculum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* अपने आप सेट होने वाली ग्रिड */
+    gap: 12px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.curriculum-item {
+    background-color: #f4f7f6;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #333;
+    border: 1px solid #e1e8e5;
+
+}
+</style>
+{% endblock head %}
+
+
+{% block body %}
+
+
+<div class="container-fluid">
+  <img src="/static/images/banner3.jpeg" alt="Courses by NCPUL">
+  <div class="centered">Courses by NCPUL</div>
+</div>
+
+<!--courses ncpul banner-->
+<div class="tiit-page-wrapper">
+    <div class="tiit-card">
+        
+        <!--<div class="course-page-header">
+            <h1 class="page-main-title">Courses by NCPUL</h1>
+            <p class="page-subtitle">Upgrade your skills with our certified diploma programs.</p>
+        </div>-->
+
+        <div class="modern-course-box">
+            <div class="course-title-flex">
+                <h2 class="course-heading">CABA-MDTP</h2>
+                <span class="course-badge">1 Year Diploma</span>
+            </div>
+            <h3 class="course-full-name">Diploma in Computer Applications, Business Accounting & Multilingual DTP (CABA-MDTP)</h3>
+
+            <p class="course-text">
+                This CABA-MDTP one-year diploma course has been designed for transformation of Urdu speakers into productive human resources and making them part of the employable technological work force in the emerging IT scenario and penetration of computer education to grass root level. Taking base as the DOEACC ‘O’ Level course contents, the contents have been enriched with 
+            </p>
+
+            <!--<h4 class="curriculum-title">What you will learn:</h4>-->
+            <div class="curriculum-grid">
+                <div class="curriculum-item"> Programming Techniques</div>
+                <div class="curriculum-item"> Database Applications</div>
+                <div class="curriculum-item"> Tally & Accounting</div>
+                <div class="curriculum-item"> Web Designing Tools</div>
+                <div class="curriculum-item"> CorelDraw & Photoshop</div>
+                <div class="curriculum-item"> Urdu & Hindi DTP (InPage)</div>
+            </div>
+
+            <p>The course in Accounting Package (Tally), Urdu and DTP software is taught in addition to DOEACC ‘O’ level course. CABA-MDTP course is a modular course.</p>
+        <p>The course contents of CABA-MDTP include those of DOEACC ‘O’ level and CCC of DOEACC in addition to Tally and Multilingual DTP.</p>
+        <p>The contents have been designed keeping in view that there will be number of career options possible for an individual after successfully completing the course.</p>
+        <p>In addition to CABA-MDTP diploma the student must appear in the DOCEACC CCC examination after having gone training in M1 and M2 modules. However after 1st semester of CABA-MDTP diploma examination, the student can appear for the modules for which he/she has undergone training at the NCPUL Centre. Thereby the student who has undergone training in CABA-MDTP diploma can get certificates of three courses viz CABA-MDTP, DOEACC CCC and DOEACC ‘O’ level after successfully passing the respective examinations. For ‘O’ level Certificate, the centers should have accreditation by DOEACC.</p>
+            
+        </div>
+
+        <div class="modern-course-box secondary-course">
+            <div class="course-title-flex">
+                <h2 class="course-heading">Diploma in Urdu</h2>
+                <span class="course-badge">1 Year Diploma</span>
+            </div>
+            
+            <p class="course-text" style="margin-top: 10px;">
+                The council has launched one year Diploma course in Urdu through English and Hindi medium. Admission in this course is compulsory and passing in one year diploma course in Urdu will be a precondition for award of Diploma in Computer Applications, Business Accounting and Multilingual DTP.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock body %}
